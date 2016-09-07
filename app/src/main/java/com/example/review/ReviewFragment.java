@@ -27,6 +27,8 @@ public class ReviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_review, container, false);
 
+        String hello = "hello";
+
         String[] item = {"Ks","Jes","Ah Bee","Gm","Zach","SJ"};
         List<String> list = new ArrayList<String>(Arrays.asList(item));
 

@@ -13,4 +13,8 @@
     <string name="sort_settings">Sort by</string>
     <string name="filter_settings">Filter by</string>
     <string name="done">Done</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="loading">Loading…</string>
+    <string name="signed_in_fmt">Signed in as: %s</string>
+    <string name="facebook_app_id">957936381001073</string>
 </resources>
