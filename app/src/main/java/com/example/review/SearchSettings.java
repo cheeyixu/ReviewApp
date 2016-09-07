@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,15 +29,19 @@ public class SearchSettings extends android.support.v4.app.DialogFragment{
 
         mTabHost.setup();
 
-        TabHost.TabSpec tabSpec = mTabHost.newTabSpec("sort");
-        tabSpec.setContent(R.id.sort_tab);
-        tabSpec.setIndicator("Sort by");
-        mTabHost.addTab(tabSpec);
+        TabHost.TabSpec tabSpec;
 
         tabSpec = mTabHost.newTabSpec("filter");
         tabSpec.setContent(R.id.filter_tab);
         tabSpec.setIndicator("Filter by");
         mTabHost.addTab(tabSpec);
+
+        tabSpec = mTabHost.newTabSpec("sort");
+        tabSpec.setContent(R.id.sort_tab);
+        tabSpec.setIndicator("Sort by");
+        mTabHost.addTab(tabSpec);
+
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
@@ -43,4 +49,6 @@ public class SearchSettings extends android.support.v4.app.DialogFragment{
 
         return dialog;
     }
+
+
 }
