@@ -13,4 +13,6 @@
     <string name="sort_settings">Sort by</string>
     <string name="filter_settings">Filter by</string>
     <string name="done">Done</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
 </resources>
