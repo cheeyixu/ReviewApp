@@ -21,7 +21,6 @@ public class SortFragment extends Fragment {
 
     private ArrayAdapter<String> mSortSettingsAdapter;
 
-
     public SortFragment() {
         // Required empty public constructor
     }
