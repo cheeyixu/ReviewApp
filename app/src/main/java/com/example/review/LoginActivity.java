@@ -8,7 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -35,6 +40,8 @@ public class LoginActivity extends AppCompatActivity implements
     private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
 
+    CallbackManager callbackManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,6 +52,29 @@ public class LoginActivity extends AppCompatActivity implements
 
         setContentView(R.layout.activity_login);
 
+        //Facebook login
+        LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email");
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Intent goMainPage = new Intent(getParent(), MainActivity.class);
+                startActivity(goMainPage);
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
+
+        //Google sign in
         mStatusTextView = (TextView) findViewById(R.id.status);
 
         // Button listeners
@@ -63,7 +93,8 @@ public class LoginActivity extends AppCompatActivity implements
                 .build();
 
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        signInButton.setSize(SignInButton.SIZE_WIDE);
+        signInButton.setColorScheme(0);
         signInButton.setScopes(gso.getScopeArray());
         // [END customize_button]
     }
@@ -114,6 +145,8 @@ public class LoginActivity extends AppCompatActivity implements
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
+            Intent goMainPage = new Intent(this, MainActivity.class);
+            startActivity(goMainPage);
 //            updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
