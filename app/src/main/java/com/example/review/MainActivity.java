@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity
         TextView navUsername = (TextView) header.findViewById(R.id.nav_username);
         navUsername.setText("HeyPpl");
 
+        Toast.makeText(this,"HELLLLOOOOOOOOOOO",Toast.LENGTH_LONG).show();
+
     }
 
     @Override
