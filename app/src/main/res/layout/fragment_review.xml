@@ -10,6 +10,6 @@
         android:id="@+id/listview_review"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:dividerHeight="3dp"/>
+        android:dividerHeight="5dp"/>
 
 </FrameLayout>

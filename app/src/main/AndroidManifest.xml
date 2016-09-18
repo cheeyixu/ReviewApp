@@ -22,8 +22,8 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".SearchableActivity"></activity>
-        <activity android:name=".SearchSettings"></activity>
+        <activity android:name=".SearchableActivity" />
+        <activity android:name=".ReviewArticleActivity"></activity>
     </application>
 
 </manifest>

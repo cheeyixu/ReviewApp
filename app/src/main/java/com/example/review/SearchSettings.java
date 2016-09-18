@@ -1,46 +1,132 @@
 package com.example.review;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TabHost;
-import android.widget.Toast;
-
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 
 /**
- * Created by jesmond on 20/7/2016.
+ * Fragment dialog displaying tab host...
  */
-public class SearchSettings extends android.support.v4.app.DialogFragment{
+public class SearchSettings extends DialogFragment
+{
+    // ------------------------------------------------------------------------
+    // members
+    // ------------------------------------------------------------------------
 
-    private TabHost mTabHost;
+    private SectionsPagerAdapter sectionsPagerAdapter;
+    private WrapViewPager viewPager;
 
+    // ------------------------------------------------------------------------
+    // public usage
+    // ------------------------------------------------------------------------
+
+    @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState)
     {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.search_settings, null);
-        mTabHost = (TabHost)view.findViewById(android.R.id.tabhost);
-
-        mTabHost.setup();
-
-        TabHost.TabSpec tabSpec = mTabHost.newTabSpec("sort");
-        tabSpec.setContent(R.id.sort_tab);
-        tabSpec.setIndicator("Sort by");
-        mTabHost.addTab(tabSpec);
-
-        tabSpec = mTabHost.newTabSpec("filter");
-        tabSpec.setContent(R.id.filter_tab);
-        tabSpec.setIndicator("Filter by");
-        mTabHost.addTab(tabSpec);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(view);
-        Dialog dialog = builder.create();
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.YELLOW));
+        dialog.getWindow().setLayout(300,300);
 
         return dialog;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.search_settings, container);
+
+        // tab slider
+        sectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
+
+        // Set up the ViewPager with the sections adapter.
+        viewPager = (WrapViewPager) view.findViewById(R.id.pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+
+        PagerTitleStrip pagerTitleStrip = (PagerTitleStrip) view.findViewById(R.id.pager_title_strip);
+        pagerTitleStrip.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+        pagerTitleStrip.setGravity(Gravity.CENTER_VERTICAL);
+
+        Button done = (Button) view.findViewById(R.id.done_button);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+        return view;
+    }
+
+    // ------------------------------------------------------------------------
+    // inner classes
+    // ------------------------------------------------------------------------
+
+    /**
+     * Used for tab paging...
+     */
+    public class SectionsPagerAdapter extends FragmentPagerAdapter
+    {
+        private int mCurrentPosition = -1;
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 0)
+            {
+                // find first fragment...
+                SortFragment ft1 = new SortFragment();
+                return ft1;
+            }
+            else if (position == 1)
+            {
+                // find first fragment...
+                FilterFragment ft2 = new FilterFragment();
+                return ft2;
+            }
+
+            return null;
+        }
+        @Override
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+            super.setPrimaryItem(container, position, object);
+            if (position != mCurrentPosition) {
+                Fragment fragment = (Fragment) object;
+                WrapViewPager pager = (WrapViewPager) container;
+                if (fragment != null && fragment.getView() != null) {
+                    mCurrentPosition = position;
+                    pager.measureCurrentView(fragment.getView());
+                }
+            }
+        }
+        @Override
+        public int getCount() {
+            // Show 2 total pages.
+            return 2;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "Sort by";
+                case 1:
+                    return "Filter by";
+            }
+            return null;
+        }
     }
 }
