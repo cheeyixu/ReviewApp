@@ -23,7 +23,15 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".SearchableActivity" />
-        <activity android:name=".ReviewArticleActivity"></activity>
+        <activity
+            android:name=".ReviewArticleActivity"
+            android:label="@string/title_activity_review_article"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.review.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

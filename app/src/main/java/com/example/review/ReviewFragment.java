@@ -1,5 +1,6 @@
 package com.example.review;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +32,7 @@ public class ReviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_review, container, false);
 
-        String[] item = {"Ks","Jes","Ah Bee","Gm","Zach","SJ"};
+        final String[] item = {"Ks","Jes","Ah Bee","Gm","Zach","SJ"};
         List<String> list = new ArrayList<String>(Arrays.asList(item));
 
         mReviewAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item_review,R.id.profile_name,list);
@@ -39,7 +43,18 @@ public class ReviewFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ReviewArticleActivity.class);
 
+                TextView titleTV = (TextView) view.findViewById(R.id.review_title);
+                TextView reviewerTV = (TextView) view.findViewById(R.id.profile_name);
+
+                String titleName = titleTV.getText().toString();
+                String reviewerName = reviewerTV.getText().toString();
+
+                intent.putExtra("title",titleName);
+                intent.putExtra("reviewer", reviewerName);
+
+                startActivity(intent);
             }
         });
         return rootView;

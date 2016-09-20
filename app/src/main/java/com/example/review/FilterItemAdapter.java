@@ -27,18 +27,18 @@ public class FilterItemAdapter extends ArrayAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder mainViewholder = null;
+        FilterItemViewHolder mainViewholder = null;
         if(convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(layout, parent, false);
-            ViewHolder viewHolder = new ViewHolder();
+            FilterItemViewHolder viewHolder = new FilterItemViewHolder();
             viewHolder.attr = (TextView) convertView.findViewById(R.id.filter_list_text);
             viewHolder.min = (EditText) convertView.findViewById(R.id.min_attr);
             viewHolder.max = (EditText) convertView.findViewById(R.id.max_attr);
             viewHolder.clear = (Button) convertView.findViewById(R.id.clear_button);
             convertView.setTag(viewHolder);
         }
-        mainViewholder = (ViewHolder) convertView.getTag();
+        mainViewholder = (FilterItemViewHolder) convertView.getTag();
         mainViewholder.clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +50,7 @@ public class FilterItemAdapter extends ArrayAdapter {
         return super.getView(position, convertView, parent);
     }
 
-    public class ViewHolder{
+    public class FilterItemViewHolder{
         TextView attr;
         EditText min;
         EditText max;
