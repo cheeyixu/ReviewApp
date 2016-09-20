@@ -5,4 +5,6 @@
     <color name="colorPrimaryLight">#D29797</color>
     <color name="colorAccent">#D26464</color>
     <color name="white">#FFFFFF</color>
+    <color name="activeText">#595959</color>
+    <color name="black">#000</color>
 </resources>
