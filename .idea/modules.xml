@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Review.iml" filepath="$PROJECT_DIR$/Review.iml" />
       <module fileurl="file://$PROJECT_DIR$/ReviewApp.iml" filepath="$PROJECT_DIR$/ReviewApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/ReviewApp_master.iml" filepath="$PROJECT_DIR$/.idea/ReviewApp.iml" />
+>>>>>>> origin/master
     </modules>
   </component>
 </project>
