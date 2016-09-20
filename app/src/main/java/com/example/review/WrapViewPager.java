@@ -1,12 +1,9 @@
 package com.example.review;
 
 import android.content.Context;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.Animation;
-import android.widget.Toast;
 
 /**
  * Created by jesmond on 15/9/2016.
