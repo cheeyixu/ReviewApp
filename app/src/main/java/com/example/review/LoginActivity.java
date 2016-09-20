@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+<<<<<<< HEAD
+=======
+import android.widget.Toast;
+>>>>>>> origin/master
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -33,6 +37,10 @@ public class LoginActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener{
 
+<<<<<<< HEAD
+=======
+    //Google
+>>>>>>> origin/master
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
 
@@ -40,6 +48,10 @@ public class LoginActivity extends AppCompatActivity implements
     private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
 
+<<<<<<< HEAD
+=======
+    //Facebook
+>>>>>>> origin/master
     CallbackManager callbackManager;
 
     @Override
@@ -53,14 +65,29 @@ public class LoginActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_login);
 
         //Facebook login
+<<<<<<< HEAD
+=======
+
+        callbackManager = CallbackManager.Factory.create();
+>>>>>>> origin/master
         LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+<<<<<<< HEAD
                 Intent goMainPage = new Intent(getParent(), MainActivity.class);
                 startActivity(goMainPage);
+=======
+                Log.d("LOGIN_SUCCESS", "Success");
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(getBaseContext(), "hello", duration);
+                toast.show();
+                Intent goMainPage = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(goMainPage);
+                finish();
+>>>>>>> origin/master
             }
 
             @Override
@@ -99,6 +126,7 @@ public class LoginActivity extends AppCompatActivity implements
         // [END customize_button]
     }
 
+<<<<<<< HEAD
     @Override
     public void onStart() {
         super.onStart();
@@ -124,12 +152,43 @@ public class LoginActivity extends AppCompatActivity implements
             });
         }
     }
+=======
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
+//        if (opr.isDone()) {
+//            // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
+//            // and the GoogleSignInResult will be available instantly.
+//            Log.d(TAG, "Got cached sign-in");
+//            GoogleSignInResult result = opr.get();
+//            handleSignInResult(result);
+//        } else {
+//            // If the user has not previously signed in on this device or the sign-in has expired,
+//            // this asynchronous branch will attempt to sign in the user silently.  Cross-device
+//            // single sign-on will occur in this branch.
+//            showProgressDialog();
+//            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+//                @Override
+//                public void onResult(GoogleSignInResult googleSignInResult) {
+//                    hideProgressDialog();
+//                    handleSignInResult(googleSignInResult);
+//                }
+//            });
+//        }
+//    }
+>>>>>>> origin/master
 
     // [START onActivityResult]
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+<<<<<<< HEAD
+=======
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+>>>>>>> origin/master
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
