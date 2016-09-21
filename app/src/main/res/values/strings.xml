@@ -19,4 +19,33 @@
     <string name="loading">Loading…</string>
     <string name="signed_in_fmt">Signed in as: %s</string>
     <string name="facebook_app_id">957936381001073</string>
+
+    <!-- New Review Strings -->
+    <string name="new_product_photo">New product photo</string>
+    <string name="uploaded_product_photo">uploaded product photo</string>
+    <string name="new_review_title">Title</string>
+    <string name="new_title_hint">add a title to your review</string>
+    <string name="new_review_category">Category</string>
+    <string name="new_review_rating">Rating</string>
+    <string name="new_review_rating_category_one">Category One</string>
+    <string name="new_review_base_rating">0.0</string>
+    <string name="new_review_rating_category_two">Category Two</string>
+    <string name="new_review_rating_category_three">Category Three</string>
+    <string name="new_review_review_section_heading">Review</string>
+    <string name="new_review_hint">write your review here</string>
+
+    <!--Spinner in newReview strings -->
+    <string name="productCategory">Pick a Product Category</string>
+    <string name="cancel_new_review">Cancel</string>
+    <string name="publish_new_review">Publish</string>
+    <string-array name="productTypes">
+        <item>Select a Category...</item>
+        <item>Phone</item>
+        <item>Printer</item>
+        <item>Laptops</item>
+    </string-array>
+
+
+
+
 </resources>
