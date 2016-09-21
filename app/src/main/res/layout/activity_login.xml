@@ -37,12 +37,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="70dp" />
 
-    <!--         android:background="@drawable/simplyreviewlogo" -->
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:id="@+id/simplyreviewlogo"
-
+        android:background="@drawable/simplyreviewlogo"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
